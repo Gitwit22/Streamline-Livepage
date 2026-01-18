@@ -11,79 +11,12 @@
         height: 100%;
         background: #000;
       }
-      body {
-        display: flex;
-      }
       iframe {
         width: 100%;
         height: 100%;
         border: 0;
       }
-      #playerContainer {
-        height: 100%;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-      }
-      #iframeWrapper {
-        flex: 1;
-        min-height: 0;
-      }
-      #refreshBtn {
-        margin: 8px;
-        padding: 6px 12px;
-        cursor: pointer;
-      }
-      #refreshStatus {
-        color: #fff;
-        font-size: 14px;
-      }
     </style>
   </head>
   <body>
-    <div id="playerContainer">
-      <button id="refreshBtn">Refresh Player</button>
-      <span id="refreshStatus" style="display: none;">Refreshing...</span>
-      <div id="iframeWrapper">
-        <iframe
-          id="streamlinePlayer"
-          src="https://streamline-hls-dev-web.onrender.com/live/kGuEy1wAuiXgfEAjV5Es"
-          style="width:100%;height:100%;border:0;"
-          allow="autoplay; encrypted-media"
-          allowfullscreen
-        ></iframe>
-      </div>
-    </div>
-
-    <script>
-      (function () {
-        var iframe = document.getElementById('streamlinePlayer');
-        var refreshBtn = document.getElementById('refreshBtn');
-        var statusEl = document.getElementById('refreshStatus');
-
-        if (!iframe || !refreshBtn) return;
-
-        refreshBtn.addEventListener('click', function () {
-          if (!iframe.src) return;
-
-          refreshBtn.disabled = true;
-          if (statusEl) {
-            statusEl.style.display = 'inline';
-            statusEl.textContent = 'Refreshing...';
-          }
-
-          var url = new URL(iframe.src);
-          url.searchParams.set('r', Date.now().toString());
-          iframe.src = url.toString();
-
-          setTimeout(function () {
-            refreshBtn.disabled = false;
-            if (statusEl) {
-              statusEl.style.display = 'none';
-            }
-          }, 1000);
-        });
-      })();
-    </script>
-  </body>
-</html>
+<iframe src="https://streamline-hls-dev-web.onrender.com/live/kGuEy1wAuiXgfEAjV5Es" style="width:100%;height:100%;border:0;" allow="autoplay; encrypted-media" allowfullscreen></iframe></html>
